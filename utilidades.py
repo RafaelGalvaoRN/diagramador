@@ -9,7 +9,7 @@ import platform
 if platform.system() == 'Windows':
     font_path = "C:/Windows/Fonts/seguisym.ttf"
 else:
-    font_path = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+    font_path = "fonte/NotoColorEmoji-Regular.ttf"
 
 # Função para criar o diagrama de vínculos
 
