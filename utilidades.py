@@ -1,8 +1,15 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import streamlit as st
+from matplotlib.font_manager import FontProperties
+import platform
 
 
+
+if platform.system() == 'Windows':
+    font_path = "C:/Windows/Fonts/seguisym.ttf"
+else:
+    font_path = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
 
 # Função para criar o diagrama de vínculos
 
@@ -29,7 +36,9 @@ def criar_diagrama_de_vinculos(nodos, arestas):
     # Desenhar rótulos com nomes manualmente
     ax = plt.gca()
     for nodo, (x, y) in pos.items():
-        ax.text(x, y, nodo, fontsize=12, ha='center', va='center', fontfamily='sans-serif', fontweight='bold', bbox=dict(facecolor='white', edgecolor='none', boxstyle='round,pad=0.3'))
+        ax.text(x, y, nodo, fontsize=12, ha='center', va='center',
+                fontproperties=FontProperties(fname=font_path, size=20),
+                fontweight='bold', bbox=dict(facecolor='white', edgecolor='none', boxstyle='round,pad=0.3'))
 
     plt.title("Diagrama de Vínculos")
     st.pyplot(plt)

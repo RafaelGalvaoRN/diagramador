@@ -5,6 +5,20 @@ import emoji
 from utilidades import criar_diagrama_de_vinculos
 
 
+font_css = """
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
+
+body {
+    font-family: 'Noto Color Emoji', sans-serif;
+}
+</style>
+"""
+
+# Inject the CSS into the Streamlit app
+st.markdown(font_css, unsafe_allow_html=True)
+
+
 
 st.title("APP Gráfico 🌎")
 
@@ -14,20 +28,19 @@ if 'nodos' not in st.session_state:
 if 'arestas' not in st.session_state:
     st.session_state['arestas'] = []
 
-# Lista de emojis relacionados a objetos e pessoas
-emojis = {
-    "Casa": emoji.emojize(":house:"),
-    "Trabalho": emoji.emojize(":briefcase:"),
-    "Carro": emoji.emojize(":automobile:"),
-    "Dinheiro": emoji.emojize(":money_with_wings:"),
-    "Homem": emoji.emojize(":man:"),
-    "Mulher": emoji.emojize(":woman:"),
-    "Planta (Droga)": emoji.emojize(":herb:"),
-    "Telefone": emoji.emojize(":telephone_receiver:"),
-    "E-mail": emoji.emojize(":incoming_envelope:"),
-    "Computador": emoji.emojize(":desktop_computer:")
-}
 
+emojis = {
+    "Casa": "\U0001F3E0",
+    "Trabalho": "\U0001F4BC",
+    "Carro": "\U0001F697",
+    "Dinheiro": "\U0001F4B8",
+    "Homem": "\U0001F468",
+    "Mulher": "\U0001F469",
+    "Planta (Droga)": "\U0001F33F",
+    "Telefone": "\U0001F4DE",
+    "E-mail": "\U0001F4E8",
+    "Computador": "\U0001F4BB"
+}
 col1, col2, col3 = st.columns(3)
 
 with col1:
