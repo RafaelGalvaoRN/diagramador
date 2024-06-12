@@ -2,7 +2,7 @@ import streamlit as st
 import networkx as nx
 import matplotlib.pyplot as plt
 import emoji
-from utilidades import criar_diagrama_de_vinculos
+from utilidades import criar_diagrama_de_vinculos, emojis_atual, emojis_antigo
 
 
 font_css = """
@@ -29,25 +29,14 @@ if 'arestas' not in st.session_state:
     st.session_state['arestas'] = []
 
 
-emojis = {
-    "Casa": "\U0001F3E0",
-    "Trabalho": "\U0001F4BC",
-    "Carro": "\U0001F697",
-    "Dinheiro": "\U0001F4B8",
-    "Homem": "\U0001F468",
-    "Mulher": "\U0001F469",
-    "Planta (Droga)": "\U0001F33F",
-    "Telefone": "\U0001F4DE",
-    "E-mail": "\U0001F4E8",
-    "Computador": "\U0001F4BB"
-}
+
 col1, col2, col3 = st.columns(3)
 
 with col1:
     nodos_input = st.text_input("Insira um elemento")
 
 with col2:
-    emoji_input = st.selectbox("Escolha um emoji", list(emojis.values()))
+    emoji_input = st.selectbox("Escolha um emoji", list(emojis_atual.values()))
 
 with col3:
     color = st.color_picker("Escolha uma cor para o elemento", "#00f900")
@@ -61,7 +50,7 @@ st.write("Elementos atuais:")
 
 # Caixa para exibir os nodos adicionados, um abaixo do outro
 for nodo, color in st.session_state['nodos']:
-    st.write(f"- {nodo} (Cor: {color})")
+    st.write(f"- {nodo}")
 
 # Adicionar arestas entre os nodos
 st.write("Adicionar ligação / Vínculo entre Elementos:")
